@@ -48,7 +48,7 @@ public class StorageBenchmark {
         final BenchmarkState state = mBenchmarkRule.getState();
         BlobAsyncClient blobAsyncClient = new BlobClientBuilder()
                 .endpoint(BLOB_SERVICE_SAS_URL_TEST)
-                .buildAsyncClient();
+                .buildBlobAsyncClient();
 
         while (state.keepRunning())
             downloadBlobReactor(blobAsyncClient).block();
@@ -59,7 +59,7 @@ public class StorageBenchmark {
         final BenchmarkState state = mBenchmarkRule.getState();
         BlobClient blobClient = new BlobClientBuilder()
                 .endpoint(BLOB_SERVICE_SAS_URL_TEST)
-                .buildClient();
+                .buildBlobClient();
 
         while (state.keepRunning()) {
             state.pauseTiming();
@@ -80,7 +80,7 @@ public class StorageBenchmark {
         final BenchmarkState state = mBenchmarkRule.getState();
         BlobAsyncClient blobAsyncClient = new BlobClientBuilder()
                 .endpoint(BLOB_SERVICE_SAS_URL_TEST)
-                .buildAsyncClient();
+                .buildBlobAsyncClient();
 
         while (state.keepRunning()) {
             Flux.just(true).repeat(targetDownloads - 1)
@@ -94,7 +94,7 @@ public class StorageBenchmark {
         final BenchmarkState state = mBenchmarkRule.getState();
         BlobClient blobClient = new BlobClientBuilder()
                 .endpoint(BLOB_SERVICE_SAS_URL_TEST)
-                .buildClient();
+                .buildBlobClient();
         ArrayList<AsyncTask<Object, Object, Object>> asyncTasks = new ArrayList<>(targetDownloads);
 
         while (state.keepRunning()) {
@@ -124,6 +124,7 @@ public class StorageBenchmark {
                 .download()
                 .subscribeOn(Schedulers.elastic())
                 .publishOn(AndroidScheduler.mainThread())
+                .flatMapMany(flux -> flux)
                 .flatMap((Function<ByteBuffer, Publisher<Boolean>>) byteBuffer -> {
                     try {
                         outputStream.write(byteBuffer.array());

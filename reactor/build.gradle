@@ -9,7 +9,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,4 +34,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'io.projectreactor:reactor-core:3.3.0.RELEASE'
+    testImplementation 'io.projectreactor:reactor-test:3.2.3.RELEASE'
 }
