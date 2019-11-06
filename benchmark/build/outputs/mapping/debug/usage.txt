@@ -1,0 +1,1 @@
+com.azure.data.android.benchmark.BuildConfig

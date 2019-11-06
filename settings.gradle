@@ -1,0 +1,4 @@
+rootProject.name='BenchmarkDesugaring'
+include ':app'
+include ':benchmark'
+include ':reactor'
