@@ -1,4 +1,4 @@
-rootProject.name='BenchmarkDesugaring'
+rootProject.name='Benchmark'
 include ':app'
 include ':benchmark'
 include ':reactor'

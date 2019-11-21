@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.azure.data.android.benchmarkdesugaring"
+        applicationId "com.azure.data.android.benchmark"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

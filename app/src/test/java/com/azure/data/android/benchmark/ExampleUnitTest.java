@@ -1,4 +1,4 @@
-package com.azure.data.android.benchmarkdesugaring;
+package com.azure.data.android.benchmark;
 
 import org.junit.Test;
 
