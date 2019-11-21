@@ -1,2 +1,0 @@
-com.azure.data.android.benchmark.R: R()
-com.azure.data.android.benchmark.R
